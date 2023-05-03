@@ -5,10 +5,13 @@ import css from '../ContactForm/ContactForm.module.css';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/slice';
+import { selectContacts } from 'redux/selectors';
+import { contactsApiReducer } from 'redux/testReducer';
+import getContactsApi from 'service/fetchContacts';
 
 export default function ContactForm() {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(selectContacts);
 
   const addContactBtn = e => {
     e.preventDefault();
@@ -19,7 +22,7 @@ export default function ContactForm() {
     };
     if (contacts.find(contact => contact.name === newContact.name)) {
       Report.failure('Attention', 'This contact is in your phonebook', 'Okay');
-     } else {
+    } else {
       dispatch(addContact(newContact));
       Notify.success('The contact was successfully added');
     }
@@ -55,6 +58,13 @@ export default function ContactForm() {
       </label>
       <button type="submit" className={css.form__btn}>
         Add contact
+      </button>
+      <button
+        type="button"
+        className={css.form__btn}
+        onClick={() => dispatch(contactsApiReducer())}
+      >
+        Принудительный запрос
       </button>
     </form>
   );

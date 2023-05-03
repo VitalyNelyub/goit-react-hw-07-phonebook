@@ -11,6 +11,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { contactsApi } from './testReducer';
 
 const persistConfig = {
   key: 'contacts',
@@ -18,7 +19,7 @@ const persistConfig = {
   whitelist: ['contacts'],
 };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, contactsApi);
 
 export const store = configureStore({
   reducer: persistedReducer,
