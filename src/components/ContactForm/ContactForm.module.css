@@ -1,0 +1,63 @@
+.phonebook {
+  width: 800px;
+  border: 4px solid rgb(116, 135, 201);
+  border-radius: 12px;
+  margin: 40px auto;
+  padding: 40px;
+  background: linear-gradient(
+    315deg,
+    rgba(48, 87, 88, 1) 0%,
+    rgba(54, 101, 129, 0.9725140056022409) 100%
+  );
+}
+
+.form__title,
+h2 {
+  font-size: 34px;
+  color: rgb(116, 135, 201);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  width: 400px;
+  justify-content: baseline;
+}
+
+.form__btn {
+  width: 200px;
+  font-weight: 600;
+  padding: 6px;
+  background-color: rgb(109, 109, 223);
+  border-radius: 14px;
+  transition: all 250ms;
+  cursor: pointer;
+}
+
+.form__btn:hover {
+  transform: scale(1.1);
+  box-shadow: 10px 15px 5px rgba(86, 84, 84, 0.56);
+  
+}
+
+.form__input {
+  margin-top: 5px;
+  font-size: 18px;
+  width: 300px;
+  display: flex;
+  background-color: transparent;
+  border: 2px solid rgb(116, 135, 201);
+  border-radius: 4px;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+.form__input:focus {
+  border: 2px solid rgb(226, 88, 64);
+}
+
+label {
+  color: rgb(40, 185, 185);
+}

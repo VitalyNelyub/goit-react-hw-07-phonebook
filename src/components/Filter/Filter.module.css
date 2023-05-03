@@ -1,0 +1,25 @@
+.filter__title {
+  font-size: 18px;
+}
+
+.filter__input {
+  margin-top: 5px;
+  font-size: 18px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  border: 2px solid rgb(116, 135, 201);
+  border-radius: 4px;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.filter__input:focus {
+  border: 2px solid rgb(226, 88, 64);
+}
+
+.filter {
+  display: flex;
+}
