@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/slice';
 import { selectContacts } from 'redux/selectors';
 import { contactsApiReducer } from 'redux/testReducer';
-import getContactsApi from 'service/fetchContacts';
+// import getContactsApi from 'service/fetchContacts';
 
 export default function ContactForm() {
   const dispatch = useDispatch();
