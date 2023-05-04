@@ -4,10 +4,11 @@ import { nanoid } from 'nanoid';
 import css from '../ContactForm/ContactForm.module.css';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/slice';
 import { selectContacts } from 'redux/selectors';
-import { contactsApiReducer } from 'redux/testReducer';
-// import getContactsApi from 'service/fetchContacts';
+import {  createContactApi } from 'redux/testReducer';
+
+
+const NOW = new Date();
 
 export default function ContactForm() {
   const dispatch = useDispatch();
@@ -17,13 +18,14 @@ export default function ContactForm() {
     e.preventDefault();
     const newContact = {
       name: e.target.name.value,
-      number: e.target.number.value,
+      phone: e.target.number.value,
       id: nanoid(),
+      createdAt: `${NOW}`,
     };
     if (contacts.find(contact => contact.name === newContact.name)) {
       Report.failure('Attention', 'This contact is in your phonebook', 'Okay');
     } else {
-      dispatch(addContact(newContact));
+      dispatch(createContactApi(newContact));
       Notify.success('The contact was successfully added');
     }
     e.target.name.value = '';
@@ -58,13 +60,6 @@ export default function ContactForm() {
       </label>
       <button type="submit" className={css.form__btn}>
         Add contact
-      </button>
-      <button
-        type="button"
-        className={css.form__btn}
-        onClick={() => dispatch(contactsApiReducer())}
-      >
-        Принудительный запрос
       </button>
     </form>
   );
