@@ -11,7 +11,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { contactsApi } from './testReducer';
+import { contactsApi } from './reducer';
 
 const persistConfig = {
   key: 'contacts',

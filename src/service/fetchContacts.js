@@ -1,24 +1,22 @@
 import axios from 'axios';
 
-// axios.defaults.baseURL =
-//   'https://64527e01a2860c9ed40dd0a1.mockapi.io';
+const BASE_URL = 'https://64527e01a2860c9ed40dd0a1.mockapi.io';
 
-// export default function getContactsApi() {
-//   const contacts = axios.get(
-//     'https://contacts.64527e01a2860c9ed40dd0a1.mockapi.io/contacts/contacts'
-//   );
-//   console.log(contacts.then(data => console.log(data)));
-//   return contacts;
-// }
+export const getContactsApi = async () => {
+  const contacts = await axios.get(`${BASE_URL}/contacts/contacts`);
+  return contacts.data;
+};
 
-export default function getContactsApi() {
-  const contacts = axios.get('https://64527e01a2860c9ed40dd0a1.mockapi.io/contacts/contacts');
-//   console.log(contacts.data);
-  return contacts;
-}
+export const createContactsApi = async contact => {
+  const contacts = await axios.post(`${BASE_URL}/contacts/contacts`, {
+    ...contact,
+  });
+  return contacts.data;
+};
 
-// getContactsApi().then(data => console.log(data));
-// console.log(contacts);
-// getContactsApi().then(data => {
-//   console.log(data.data);
-// });
+export const deleteContactsApi = async id => {
+  const result = await axios.delete(`${BASE_URL}/contacts/contacts/${id}`);
+  return result.data.id;
+};
+
+

@@ -3,23 +3,22 @@ import css from '../Contacts/ContactList.module.css';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectContacts, selectFilter } from 'redux/selectors';
-import { contactsApiReducer, deleteContactApi } from 'redux/testReducer';
 import { useEffect } from 'react';
+import { deleteContactsThunk, getContactsThunk } from 'redux/thunks';
+
 
 export default function ContactList() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(contactsApiReducer());
+    dispatch(getContactsThunk());
   }, [dispatch]);
 
   const contactsList = useSelector(selectContacts);
-  // console.log(contactsList);
   const filteredContacts = useSelector(selectFilter);
-  // console.log(filteredContacts);
 
   const delContact = id => {
-    dispatch(deleteContactApi(id));
+    dispatch(deleteContactsThunk(id));
     Notify.failure('The contact was successfully deleted');
   };
 

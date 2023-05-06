@@ -5,7 +5,8 @@ import css from '../ContactForm/ContactForm.module.css';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
-import {  createContactApi } from 'redux/testReducer';
+import { createContactsThunk } from 'redux/thunks';
+
 
 
 const NOW = new Date();
@@ -25,7 +26,7 @@ export default function ContactForm() {
     if (contacts.find(contact => contact.name === newContact.name)) {
       Report.failure('Attention', 'This contact is in your phonebook', 'Okay');
     } else {
-      dispatch(createContactApi(newContact));
+      dispatch(createContactsThunk(newContact));
       Notify.success('The contact was successfully added');
     }
     e.target.name.value = '';
